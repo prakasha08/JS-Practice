@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        #score {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <input id="originalno" type="number">
+    <button onclick="randomno()">Check</button>
+    <p id="score">Score: 10</p>
+    <p id="text">You are right/Wrong</p>
+    <script>
+        let totalScore = 10;  // Initialize totalScore outside the function to keep track of the score
+
+        function randomno() {
+            const N = document.getElementById('originalno');
+            const n = Number(N.value);
+            const Rn = Math.floor(Math.random() * 10);
+            const p = document.getElementById('text');
+            const score = document.getElementById('score');
+
+            if (Rn === n) {
+                p.textContent = Rn + " - You are Right";
+                alert("You WON!!...");
+            } else {
+                totalScore -= 1;
+                score.textContent = "Score: " + totalScore;
+                p.textContent = Rn + " - You are Wrong";
+            }
+        }
+    </script>
+</body>
+</html>
